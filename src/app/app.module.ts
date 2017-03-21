@@ -10,6 +10,7 @@ import { HomeModule } from './home/home.module';
 import {
   ApiService,
   UserService,
+  JwtService,
   SharedModule,
   HeaderComponent,
   FooterComponent
@@ -34,6 +35,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
   ],
   providers: [
     ApiService,
+    JwtService,
     UserService
   ],
   bootstrap: [AppComponent]

@@ -5,10 +5,13 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import { JwtService } from './jwt.service';
+
 @Injectable()
 export class ApiService {
   constructor(
-    private http: Http
+    private http: Http,
+    private jwtService: JwtService
   ) {}
 
   private setHeaders(): Headers {
@@ -18,11 +21,20 @@ export class ApiService {
       'Accept': 'application/json'
     };
 
+    if (this.jwtService.getToken()) {
+      headersConfig['Authorization'] = `Token ${this.jwtService.getToken()}`;
+    }
     return new Headers(headersConfig);
   }
 
   private formateErrors(error: any) {
     return Observable.throw(error.json());
+  }
+
+  get(path: string, params: URLSearchParams = new URLSearchParams()): Observable<any> {
+    return this.http.get(`${environment.api_url}${path}`, { headers: this.setHeaders(), search: params })
+      .catch(this.formateErrors)
+      .map((res: Response) => res.json());
   }
 
   post(path: string, body: Object = {}): Observable<any> {
