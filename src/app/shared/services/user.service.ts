@@ -46,6 +46,16 @@ export class UserService {
     }
   }
 
+  // Update the user on the server (email, pass, etc)
+  update(user): Observable<User> {
+    return this.apiService.put('/user', { user })
+      .map(data => {
+        // Update the currentUser observable
+        this.currentUserSubject.next(data);
+        return data.user;
+      });
+  }
+
   setAuth(user: User) {
     // Save JWT sent from server in storage
     this.jwtService.saveToken(user.token);

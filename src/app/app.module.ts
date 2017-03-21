@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
+import { SettingsModule } from './settings/settings.module';
 import {
   ApiService,
   AuthGuard,
@@ -31,6 +32,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     HttpModule,
     AuthModule,
     HomeModule,
+    SettingsModule,
     SharedModule,
     rootRouting
   ],
