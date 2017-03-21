@@ -8,7 +8,7 @@
         <list-errors [errors]="errors"></list-errors>
 
         <form [formGroup]="settingsForm" (ngSubmit)="submitForm()">
-          <fieldset [disable]="isSubmitting">
+          <fieldset [disabled]="isSubmitting">
 
             <fieldset class="form-group">
               <input class="form-control"
