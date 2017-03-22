@@ -33,6 +33,6 @@ export class ShowAuthedDirective implements OnInit {
           this.viewContainer.clear();
         }
       }
-    )
+    );
   }
 }
