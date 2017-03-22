@@ -1,17 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ModuleWithProviders , NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
+import { ProfileModule } from './profile/profile.module';
 import { SettingsModule } from './settings/settings.module';
 import {
   ApiService,
   AuthGuard,
   UserService,
+  ProfilesService,
   JwtService,
   SharedModule,
   HeaderComponent,
@@ -24,14 +24,13 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
   declarations: [
     AppComponent,
     FooterComponent,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
     AuthModule,
     HomeModule,
+    ProfileModule,
     SettingsModule,
     SharedModule,
     rootRouting
@@ -40,6 +39,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     ApiService,
     AuthGuard,
     JwtService,
+    ProfilesService,
     UserService
   ],
   bootstrap: [AppComponent]
