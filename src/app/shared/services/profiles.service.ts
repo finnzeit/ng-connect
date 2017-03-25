@@ -16,4 +16,12 @@ export class ProfilesService {
     return this.apiService.get('/profile/' + username)
       .map((data: {profile: Profile}) => data.profile);
   }
+
+  follow(username: string): Observable<Profile> {
+    return this.apiService.post('/profile/' + username + '/follow');
+  }
+
+  unfollow(username: string): Observable<Profile> {
+    return this.apiService.delete('/profile/' + username + '/follow');
+  }
 }
